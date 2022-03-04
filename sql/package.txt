@@ -1,0 +1,1 @@
+create table emplo(eno number(2), ename varchar(10), esalary number(3));

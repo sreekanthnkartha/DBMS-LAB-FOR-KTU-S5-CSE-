@@ -1,0 +1,7 @@
+create table student(roll int, mark int);
+insert into student values(1, 15);
+insert into student values(2, 25);
+insert into student values(3, 55);
+insert into student values(4,40);
+insert into student values(5, 60);
+@D:\Ajay\sql\students.sql

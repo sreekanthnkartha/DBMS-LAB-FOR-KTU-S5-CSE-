@@ -1,0 +1,58 @@
+create table supplier(s_no varchar(10) primary key, sname varchar(15) not null, age int not null, city varchar(15) not null);
+create table customer(cust_no varchar(15) primary key, name varchar(15) not null, age int not null, city varchar(15) not null, pincode int not null, state varchar(15) not null);
+create table product(product_no varchar(15) primary key, description varchar(15) not null, company varchar(15) not null, price int not null);
+create table purchase1(order_no varchar(15) primary key, custno varchar(15) not null, prono varchar(15) not null, quantity int not null, orderdate date, foreign key(custno) references customer(cust_no) on delete cascade, foreign key(prono) references product(product_no) on delete cascade);
+
+insert into supplier values('S1', 'Ivan', 35, 'Bombay');
+insert into supplier values('S2', 'Nirmala', 35, 'Madras');
+insert into supplier values('S3', 'Susmitha', 55, 'Bombay');
+insert into supplier values('S4', 'Basu', 45, 'Bombay');
+insert into supplier values('S5', 'Ravi', 25, 'Delhi');
+insert into supplier values('S6', 'Nanda', 25, 'Madras');
+
+insert into customer values('C1', 'Ivan', 35, 'Bombay', 400054, 'MH');
+insert into customer values('C2', 'Vandana', 35, 'Madras', 780001, 'TN');
+insert into customer values('C3', 'Pramada', 55, 'Bombay', 400057, 'MH');
+insert into customer values('C4', 'Basu', 45, 'Bombay', 400056, 'MH');
+insert into customer values('C5', 'Ravi', 25, 'Delhi', 100001, 'DL');
+insert into customer values('C6', 'Rukmini', 25, 'Madras', 780001, 'TN');
+
+insert into product values('P1', '12 W', 5000,  'Wipro');
+insert into product values('P2', 'Lap', 1560, 'Dell');
+insert into product values('P3', 'Tab', 11000, 'HCL');
+insert into product values('P4', 'Garnet', 999, 'Wipro');
+insert into product values('P5', 'Charg', 1690, 'HCL');
+
+insert into purchase values('O1', 'C2', 'P3', 2, '20 JAN 2016');
+insert into purchase values('O2', 'C3', 'P2', 1, '27 JAN 2016');
+insert into purchase values('O8', 'C3', 'P3', 1, '27 JAN 2016');
+insert into purchase values('O9', 'C6', 'P1', 3,  '2016-01-01');
+insert into purchase values('O4', 'C3', 'P5', 4, '07 APR 2016');
+insert into purchase values('O5', 'C4', 'P2', 2, '22 MAY 2016');
+insert into purchase values('O7', 'C4', 'P3', 2, '22 MAY 2016');
+insert into purchase values('O6', 'C5', 'P4', 1, '26 MAY 2016');
+
+select distinct a.cust_no from customer a join customer b on a.city = b.city and a.cust_no<>b.cust_no union select distinct b.cust_no from customer a join customer b on a.city = b.city and a.cust_no<>b.cust_no;
+
+SQL> select * from purchase where custno in (select distinct a.cust_no from customer a join customer b on a.city = b.city and a.cust_no<>b.cust_no union select distinct b.cust_no from customer a join customer b on a.city = b.city and a.cust_no<>b.cust_no);
+
+ORDER_NO        CUSTNO          PRONO             QUANTITY ORDERDATE
+--------------- --------------- --------------- ---------- ---------
+O2              C3              P2                       1 27-JAN-16
+O3              C6              P1                       3 20-FEB-16
+O4              C3              P5                       4 07-APR-16
+O5              C4              P2                       2 22-MAY-16
+
+insert into customer1 values(100, 'Deepa', 'Trivandrum', 1050, 2, 'K0010');
+insert into customer1 values(101, 'Don', 'Trivandrum', 8040, 4, 'K0010');
+insert into customer1 values(102, 'Manacy', 'Kollam', 20030, 6, 'A200tmp');
+insert into customer1 values(103, 'Karthika', 'Eranakulam', 8400, 20, 'EkmX1050');
+insert into customer1 values(104, 'Thulasi', 'Eranakulam', 2500, 2, 'EkmY2342');
+insert into customer1 values(105, 'Roy', 'Trivandrum', 2900, 4, 'L1045');
+insert into customer1 values(106, 'Vivek', 'Trivandrum', 3200, 8, 'L1045');
+insert into customer1 values(108, 'Bhasi', 'Kottayam', 12860, 10, 'KtmP1028');
+insert into customer1 values(109, 'Anurag', 'Kottayam', 3860, 12, 'KtmB158tmp');
+insert into customer1 values(110, 'Antony', 'Kottayam', 9800, 8, 'KtmP1028');
+insert into customer1 values(111, 'Meeran', 'Thrichur', 6700, 6, 'R3085');
+
+select price from product where product_no in (select prono from purchase where custno in(select a.cust_no from customer));

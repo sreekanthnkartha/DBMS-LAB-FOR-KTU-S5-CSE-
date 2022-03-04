@@ -1,0 +1,9 @@
+create table students(roll int, s1 float, s2 float);
+
+insert into students values(1, 5, 8);
+insert into students values(2, 6, 3);
+insert into students values(3, 2, 5);
+insert into students values(4, 4, 9);
+insert into students values(5, 1, 10);
+
+@D:\Ajay\sql\honors.sql

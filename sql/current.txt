@@ -1,0 +1,9 @@
+create table curent(cno int, pre int, pas int);
+
+insert into curent values(1, 10, 150);
+insert into curent values(2, 10, 30);
+insert into curent values(3, 20, 500);
+insert into curent values(4, 4, 9);
+insert into curent values(5, 10, 600);
+
+@D:\Ajay\sql\curent.sql
