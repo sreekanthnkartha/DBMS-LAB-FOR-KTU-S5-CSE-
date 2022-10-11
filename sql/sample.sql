@@ -1,0 +1,11 @@
+SQL> SET SERVEROUTPUT ON;
+
+SQL> DECLARE
+	var1 INTEGER;
+	var2 REAL;
+	var3 varchar2(20) ;
+
+BEGIN
+	null;
+END;
+/
