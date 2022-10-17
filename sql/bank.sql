@@ -4,6 +4,8 @@ declare
     acc_no acc.accno%type;
     balance acc.bal%type;
     choice char;
+    choice2 char;
+    choice3 char;
     amount int;
 begin
     choice := &x;
