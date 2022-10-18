@@ -8,6 +8,8 @@ BEGIN
         y := 'Platinum';
     elsif x > 1000 THEN
         y := 'Gold';
+    elsif x>500 THEN
+        y:='Tin'
     else 
         y := 'Silver';
     end if;
