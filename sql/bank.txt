@@ -4,6 +4,7 @@ insert into acc values(1, 1500);
 insert into acc values(2, 2000);
 insert into acc values(3, 4000);
 insert into acc values(4, 150);
+insert into acc values(5, 4500);
 @D:\Ajay\sql\cursor.sql
 @D:\Ajay\sql\procedure.sql
 @D:\Ajay\sql\function.sql
