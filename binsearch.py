@@ -1,2 +1,5 @@
 n=int(input())
 a=list(map(int(input().split())))
+print("Hello")
+print("hi")
+print("kjhkhk")
