@@ -1,5 +1,3 @@
 n=int(input())
 a=list(map(int(input().split())))
-print("Hello")
-print("hi")
-print("kjhkhk")
+print("This file is dedicated to hacktoberfest")
