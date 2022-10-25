@@ -1,8 +1,9 @@
 set serveroutput on
+-- Creating a trigger named rte:
 create or replace trigger rte 
-before 
-insert or update of roll, mark or delete
-on student
+before -- It should be triggeres before the following operation.
+insert or update of roll, mark or delete 
+on student -- The table to which the trigger should be applied.
 for each row
 begin
     case 
